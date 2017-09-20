@@ -26,7 +26,7 @@ project(AtomicAsLibraryExample)
 set(ATOMIC_CPLUSPLUS_EXAMPLES 0 CACHE BOOL "" FORCE)
 set(ATOMIC_WEBVIEW 0 CACHE BOOL "" FORCE)
 set(ATOMIC_JAVASCRIPT 0 CACHE BOOL "" FORCE)
-set(ATOMIC_DOTNET 0 CACHE BOOL "" FORCE)
+set(ATOMIC_DOTNET 1 CACHE BOOL "" FORCE)
 set(ATOMIC_EDITOR 0 CACHE BOOL "" FORCE)
 # Add game engine to the project.
 add_subdirectory(AtomicGameEngine)
@@ -34,6 +34,9 @@ add_subdirectory(AtomicGameEngine)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 set(SOURCE_FILES main.cpp)
 add_executable(AtomicAsLibraryExample WIN32 ${SOURCE_FILES})
-target_compile_definitions(AtomicAsLibraryExample PRIVATE -DCMAKE_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+
 # Link engine to our project. It pulls in engine defines and include directories automatically.
 target_link_libraries (AtomicAsLibraryExample Atomic)
+
+#copy needed resource files to build directory
+add_custom_command(TARGET AtomicAsLibraryExample PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/AtomicGameEngine/Resources $<TARGET_FILE_DIR:AtomicAsLibraryExample>/Resources)

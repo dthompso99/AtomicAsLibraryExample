@@ -61,8 +61,8 @@ public:
         engineParameters_[EP_FULL_SCREEN]    = false;
         engineParameters_[EP_RESOURCE_PATHS] = "CoreData";
 
-        // This is a dirty hack to make example run out of the box. You likely want to fix this.
-        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = CMAKE_SOURCE_DIR "/AtomicGameEngine/Resources";
+        // look for resources in current working directory
+        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = GetSubsystem<FileSystem>()->GetCurrentDir() + "Resources";;
     }
 
     virtual void Start()

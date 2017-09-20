@@ -26,7 +26,7 @@ project(AtomicAsLibraryExample)
 set(ATOMIC_CPLUSPLUS_EXAMPLES 0 CACHE BOOL "" FORCE)
 set(ATOMIC_WEBVIEW 0 CACHE BOOL "" FORCE)
 set(ATOMIC_JAVASCRIPT 0 CACHE BOOL "" FORCE)
-set(ATOMIC_DOTNET 1 CACHE BOOL "" FORCE)
+set(ATOMIC_DOTNET 0 CACHE BOOL "" FORCE)
 set(ATOMIC_EDITOR 0 CACHE BOOL "" FORCE)
 # Add game engine to the project.
 add_subdirectory(AtomicGameEngine)
